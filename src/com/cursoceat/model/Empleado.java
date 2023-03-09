@@ -3,11 +3,12 @@ package com.cursoceat.model;
 public class Empleado {
 
 	private static int id;
+	private int idLocal;
 	protected String nombre, dni, telefono;
 	protected double sueldo;
 	
 	public Empleado() {
-		asignarID();  // Creamos un constructor y le asignamos un id
+		this.idLocal = asignarID();  // Creamos un constructor y le asignamos un id
 	}
 
 	public Empleado(String nombre, String dni, String telefono, double sueldo) {
@@ -15,15 +16,15 @@ public class Empleado {
 		this.dni = dni;
 		this.telefono = telefono;
 		this.sueldo = sueldo;
-		asignarID();  // Constructor con todos los datos y asignamos id
+		this.idLocal = asignarID();  // Constructor con todos los datos y asignamos id
 	}
 	
-	private static void asignarID() {
-		id++;
+	private static int asignarID() {
+		return ++id;
 	}
 	
-	public static int getId() {
-		return id;
+	public int getId() {
+		return idLocal;
 	}
 
 	public String getNombre() {
@@ -59,9 +60,9 @@ public class Empleado {
 	}
 	
 	public void mostrarDatos() {
-		System.out.println("El id es: " + id);
+		System.out.printf("El id es: %05d\n", idLocal);
 		System.out.println("El nombre es: " + this.nombre);
-		System.out.println("El DNI es: " + this.nombre);
+		System.out.println("El DNI es: " + this.dni);
 		System.out.println("El teléfono es: " + this.telefono);
 		System.out.println("El sueldo es: " + this.sueldo);
 	}
